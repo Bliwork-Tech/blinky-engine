@@ -5,4 +5,4 @@ class WhatsAppMessage(BaseModel):
     Body: str
     From: str
     To: str
-    Context: Optional[Dict[str, str]]
+    Context: Dict[str, str]

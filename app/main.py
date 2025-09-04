@@ -20,6 +20,7 @@ app = FastAPI()
 
 @app.post("/chatbot/{channel}")
 async def whatsapp_webhook(channel: str, msg: WhatsAppMessage):
+    print(f"Received message on channel {channel}: {msg}")
     user_msg = msg.Body
     from_number = msg.From
 
