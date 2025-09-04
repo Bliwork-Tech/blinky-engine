@@ -1,40 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: obiscuit-bot
+  name: blinky-core
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: obiscuit-bot
+      app: blinky-core
   template:
     metadata:
       labels:
-        app: obiscuit-bot
+        app: blinky-core
     spec:
       containers:
-        - name: obiscuit-bot
-          image: REGISTRY/obiscuit-bot:latest
+        - name: blinky-core
+          image: REGISTRY/blinky-core:latest
           ports:
             - containerPort: 8000
           env:
             - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: obiscuit-bot-secrets
+                  name: blinky-core-secrets
                   key: OPENAI_API_KEY
             - name: TWILIO_ACCOUNT_SID
               valueFrom:
                 secretKeyRef:
-                  name: obiscuit-bot-secrets
+                  name: blinky-core-secrets
                   key: TWILIO_ACCOUNT_SID
             - name: TWILIO_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: obiscuit-bot-secrets
+                  name: blinky-core-secrets
                   key: TWILIO_AUTH_TOKEN
             - name: TWILIO_WHATSAPP_FROM
               valueFrom:
                 secretKeyRef:
-                  name: obiscuit-bot-secrets
+                  name: blinky-core-secrets
                   key: TWILIO_WHATSAPP_FROM
